@@ -175,7 +175,7 @@ function EmailCaptureForm({ combinedPct, aScore, bScore }) {
     e.preventDefault();
     setStatus('submitting');
     try {
-      const res = await fetch('https://formspree.io/f/xaqlpjpb', {
+      const res = await fetch('https://formspree.io/f/xnjowwpe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
