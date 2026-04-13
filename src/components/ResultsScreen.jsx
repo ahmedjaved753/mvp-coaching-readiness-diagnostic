@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { SECTIONS } from '../data/questions';
 import { calcSection, getGaps, getRecs, getScoreClass, getScoreLabel, getOverallLabel, getScoreColor } from '../utils/scoring';
 
@@ -87,8 +87,6 @@ export default function ResultsScreen({ answers, onRestart }) {
           </div>
         </div>
 
-        <EmailCaptureForm combinedPct={combinedPct} aScore={aScore} bScore={bScore} />
-
         <button className="restart-btn" onClick={onRestart}>Take the Assessment Again</button>
       </div>
     </div>
@@ -166,77 +164,3 @@ function RecsCard({ title, recs }) {
   );
 }
 
-function EmailCaptureForm({ combinedPct, aScore, bScore }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setStatus('submitting');
-    try {
-      const res = await fetch('https://formspree.io/f/xnjowwpe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-          overall_score: combinedPct + '%',
-          coaching_skills_score: aScore.pct + '%',
-          clarity_purpose_score: bScore.pct + '%',
-        }),
-      });
-      if (res.ok) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  }
-
-  if (status === 'success') {
-    return (
-      <div className="email-capture-card">
-        <div className="email-capture-success">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <span>Results sent! Check your inbox.</span>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="email-capture-card">
-      <div className="email-capture-title">Get your results in your inbox</div>
-      <div className="email-capture-sub">We'll send a copy of your score and personalised recommendations.</div>
-      <form onSubmit={handleSubmit} className="email-capture-form">
-        <input
-          type="text"
-          placeholder="Your name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          required
-          className="email-capture-input"
-        />
-        <input
-          type="email"
-          placeholder="Your email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-          className="email-capture-input"
-        />
-        <button type="submit" className="email-capture-btn" disabled={status === 'submitting'}>
-          {status === 'submitting' ? 'Sending…' : 'Send My Results'}
-        </button>
-      </form>
-      {status === 'error' && (
-        <div className="email-capture-error">Something went wrong. Please try again.</div>
-      )}
-    </div>
-  );
-}

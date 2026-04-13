@@ -1,7 +1,7 @@
 /* ========================================================================
-   COACHING READINESS DIAGNOSTIC — MVP Exec Branded
-   Palette: Warm greige/taupe backgrounds, deep navy headings,
-   dusty rose accent, serif + sans-serif pairing
+   COACHING READINESS DIAGNOSTIC — Spark InSight Coaching Branded
+   Palette: Clean white backgrounds, deep navy blue headings & accents,
+   warm sand secondary, serif + sans-serif pairing
    ======================================================================== */
 
 /* === RESET === */
@@ -44,27 +44,26 @@ html {
   --font-display: 'Merriweather', Georgia, serif;
   --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
 
-  /* MVP Exec color palette — matched to mvpexec.com */
+  /* Spark InSight Coaching palette — matched to sparkinsightcoaching.com */
   --navy:          #2D5B8C;
   --navy-dark:     #245089;
   --navy-deep:     #1A3A60;
-  --rose:          #DA8175;
-  --rose-hover:    #C56B5F;
-  --rose-light:    #E89C92;
-  --rose-pale:     #FAECEA;
+  --navy-light:    #3A6FA3;
+  --navy-pale:     #E8EFF6;
   --sand:          #AC9880;
   --sand-light:    #C8BAA8;
+  --sand-pale:     #F5F0EB;
   --greige:        #DED6CC;
   --greige-light:  #EAE5DE;
-  --cream:         #F5F1EC;
-  --cream-warm:    #F0EDE9;
+  --cream:         #F4F4F4;
+  --cream-warm:    #FFFFFF;
   --white:         #FFFFFF;
   --text-dark:     #2D5B8C;
-  --text-body:     #58595B;
+  --text-body:     #585956;
   --text-muted:    #888990;
   --text-faint:    #AAABAF;
   --border-color:  #DED6CC;
-  --border-light:  #EBE8E3;
+  --border-light:  #EBEBEB;
 
   /* Semantic */
   --color-success:        #3D7A50;
@@ -104,12 +103,12 @@ body {
 }
 
 ::selection {
-  background: var(--rose-pale);
+  background: var(--navy-pale);
   color: var(--navy);
 }
 
 :focus-visible {
-  outline: 2px solid var(--rose);
+  outline: 2px solid var(--navy);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
@@ -132,7 +131,7 @@ a { color: var(--navy); text-decoration: none; }
   left: 0;
   right: 0;
   z-index: 200;
-  background: var(--cream-warm);
+  background: var(--white);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -152,7 +151,7 @@ a { color: var(--navy); text-decoration: none; }
   color: var(--navy);
 }
 
-.logo-icon { color: var(--rose); }
+.logo-icon { color: var(--sand); }
 
 .logo-text {
   font-family: var(--font-body);
@@ -170,7 +169,7 @@ a { color: var(--navy); text-decoration: none; }
   color: var(--text-muted);
   transition: color var(--transition);
 }
-.header-nav a:hover { color: var(--rose); }
+.header-nav a:hover { color: var(--navy); }
 
 /* === SCREENS === */
 .screen { display: none; }
@@ -242,7 +241,7 @@ a { color: var(--navy); text-decoration: none; }
   color: var(--text-muted);
   font-weight: 400;
 }
-.meta-item svg { color: var(--rose-light); }
+.meta-item svg { color: var(--sand); }
 
 .meta-divider {
   width: 1px;
@@ -269,15 +268,15 @@ a { color: var(--navy); text-decoration: none; }
   letter-spacing: 0.125em;
   text-transform: uppercase;
   padding: var(--space-4) var(--space-8);
-  background: var(--rose);
+  background: var(--navy);
   color: var(--white);
   border-radius: var(--radius-pill);
   transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 .btn-cta:hover {
-  background: var(--rose-hover);
+  background: var(--navy-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(218, 129, 117, 0.30);
+  box-shadow: 0 6px 24px rgba(45, 91, 140, 0.30);
 }
 .btn-cta:active { transform: translateY(0); }
 
@@ -306,7 +305,7 @@ a { color: var(--navy); text-decoration: none; }
   position: sticky;
   top: 57px; /* below header */
   z-index: 100;
-  background: var(--cream-warm);
+  background: var(--white);
   border-bottom: 1px solid var(--border-light);
   display: none;
 }
@@ -338,7 +337,7 @@ a { color: var(--navy); text-decoration: none; }
 .progress-fill {
   height: 100%;
   width: 0%;
-  background: var(--rose);
+  background: var(--navy);
   border-radius: var(--radius-pill);
   transition: width 0.5s var(--ease-out);
 }
@@ -396,8 +395,8 @@ a { color: var(--navy); text-decoration: none; }
 }
 
 .question-card.answered {
-  border-color: var(--rose-light);
-  box-shadow: 0 0 0 1px var(--rose-pale);
+  border-color: var(--sand-light);
+  box-shadow: 0 0 0 1px var(--sand-pale);
 }
 
 .question-card.unanswered-error {
@@ -409,7 +408,7 @@ a { color: var(--navy); text-decoration: none; }
   font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 700;
-  color: var(--rose);
+  color: var(--sand);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: var(--space-3);
@@ -460,8 +459,8 @@ a { color: var(--navy); text-decoration: none; }
 }
 
 .likert-option label:hover {
-  border-color: var(--rose);
-  background: var(--rose-pale);
+  border-color: var(--navy);
+  background: var(--navy-pale);
 }
 
 .likert-option input:checked + label {
@@ -688,7 +687,7 @@ a { color: var(--navy); text-decoration: none; }
   letter-spacing: 0.02em;
   transition: color var(--transition);
 }
-.q-breakdown summary:hover { color: var(--rose); }
+.q-breakdown summary:hover { color: var(--navy-light); }
 
 .q-breakdown summary::before {
   content: '';
@@ -906,7 +905,7 @@ a { color: var(--navy); text-decoration: none; }
 
 /* === FOOTER === */
 .site-footer {
-  background: var(--navy);
+  background: var(--navy-deep);
   color: rgba(255,255,255,0.5);
   padding: var(--space-8) var(--space-6);
 }
