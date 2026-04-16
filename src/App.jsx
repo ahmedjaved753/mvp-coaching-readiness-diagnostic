@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';
 import WelcomeScreen from './components/WelcomeScreen';
 import SectionScreen from './components/SectionScreen';
-import ResultsScreen from './components/ResultsScreen';
+import ThankYouScreen from './components/ThankYouScreen';
 import { SECTIONS } from './data/questions';
 import { calcSection } from './utils/scoring';
 
@@ -41,6 +41,7 @@ export default function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
+          _cc: 'mshahbazian@mvpexec.com, mpowers@mvpexec.com, molson-menzel@mvpexec.com, ahmedjaved7053@gmail.com',
           overall_score: combinedPct + '%',
           coaching_skills_score: aScore.pct + '%',
           clarity_purpose_score: bScore.pct + '%',
@@ -74,7 +75,7 @@ export default function App() {
           onBack={() => setScreen('welcome')}
           nextLabel="Continue to Section 2"
           eyebrow="Section 1 of 2"
-          title="Coaching Skills <em>&amp;</em> Style"
+          title="Career Development"
         />
       )}
 
@@ -94,7 +95,7 @@ export default function App() {
       )}
 
       {screen === 'results' && (
-        <ResultsScreen answers={answers} onRestart={handleRestart} />
+        <ThankYouScreen onRestart={handleRestart} />
       )}
 
       <Footer />
