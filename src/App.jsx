@@ -41,7 +41,6 @@ export default function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _cc: 'mshahbazian@mvpexec.com, mpowers@mvpexec.com, molson-menzel@mvpexec.com, ahmedjaved7053@gmail.com',
           overall_score: combinedPct + '%',
           coaching_skills_score: aScore.pct + '%',
           clarity_purpose_score: bScore.pct + '%',
